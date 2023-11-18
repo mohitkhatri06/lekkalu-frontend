@@ -50,7 +50,22 @@ export function useAuth() {
   })
 
   const signupMutation = useMutation(signup, {
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data?.access && data?.refresh) {
+        toast({
+          title: 'Successfully logged in!',
+        })
+
+        /** Saving the tokens in cookies */
+        setCookie(REFRESH_TOKEN_KEY, data.refresh, 30)
+        setCookie(ACCESS_TOKEN_KEY, data.access, 30)
+
+        /** updating the data in queryClient */
+        qc.setQueryData([AUTH.LOGGED_IN], data)
+
+        fetchUserData()
+        return
+      }
       toast({
         title: 'Signup Success!',
         description: 'Your account has been created successfully now you can login to you account!',

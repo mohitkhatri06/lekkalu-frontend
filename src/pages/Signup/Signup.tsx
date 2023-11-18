@@ -10,6 +10,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import { useAuthContext } from '@/hooks/use-auth'
 import Page from '@/components/Page/Page'
+import GoogleAuth from '@/components/SocialAuth/GoogleAuth'
 
 export default function Signup() {
   const { tokenData, signupMutation } = useAuthContext()
@@ -50,7 +51,7 @@ export default function Signup() {
             <h1 className='text-2xl font-bold mb-4'>Sign Up</h1>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleSignup)} className='space-y-4 w-full'>
+              <form onSubmit={form.handleSubmit(handleSignup)} className='flex flex-col gap-4'>
                 <FormField
                   control={form.control}
                   name='username'
@@ -154,12 +155,21 @@ export default function Signup() {
                 <Button type='submit' loading={signupMutation.isLoading}>
                   Continue
                 </Button>
-
-                <Link to='/signin' className='block text-sm text-muted-foreground my-2'>
-                  Already have an account? Login
-                </Link>
               </form>
             </Form>
+            <Link to='/signin' className='block text-sm text-muted-foreground my-2'>
+              Already have an account? Login
+            </Link>
+            <div className='space-y-4'>
+              <div className='flex items-center gap-2'>
+                <div className='h-[1px] bg-muted w-full' />
+                <p>OR</p>
+                <div className='h-[1px] bg-muted w-full' />
+              </div>
+              <div className='flex justify-center items-center mx-0'>
+                <GoogleAuth />
+              </div>
+            </div>
           </div>
         </div>
       </Page>

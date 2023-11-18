@@ -12,6 +12,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import { useAuthContext } from '@/hooks/use-auth'
 import Page from '@/components/Page/Page'
+import GoogleAuth from '@/components/SocialAuth/GoogleAuth'
 
 export const Signin = () => {
   const { tokenData, loginMutation } = useAuthContext()
@@ -118,20 +119,22 @@ export const Signin = () => {
               Don&apos;t have an account? Sign Up
             </Link>
 
+            <div className='space-y-4'>
+              <div className='flex items-center gap-2'>
+                <div className='h-[1px] bg-muted w-full' />
+                <p>OR</p>
+                <div className='h-[1px] bg-muted w-full' />
+              </div>
+              <div className='flex justify-center items-center mx-0'>
+                <GoogleAuth />
+              </div>
+            </div>
+
             <When truthy={!isUnderDevelopment}>
               <div className='space-y-4'>
-                <div className='flex items-center gap-2'>
-                  <div className='h-[1px] bg-muted w-full' />
-                  <p>OR</p>
-                  <div className='h-[1px] bg-muted w-full' />
-                </div>
-
                 <Button className='w-full' variant='outline'>
                   <FacebookIcon className='mr-2 w-4 h-4' />
                   <span>Continue with Facebook</span>
-                </Button>
-                <Button className='w-full' variant='outline'>
-                  <span>Continue with Google</span>
                 </Button>
 
                 {/* @TODO: Update Apple icon */}
