@@ -54,7 +54,7 @@ export const UN_AUTHENTICATED_ROUTES: Array<Route> = [
     path: '/support',
     label: 'Support',
     icon: <BadgeHelp />,
-  }
+  },
 ]
 
 export const CALCULATOR_ROUTES: Array<Route> = [
@@ -71,6 +71,11 @@ export const CALCULATOR_ROUTES: Array<Route> = [
   {
     path: '/emi-calculator',
     label: 'EMI Calculator',
+    icon: <CalculatorIcon />,
+  },
+  {
+    path: '/xirr-calculator',
+    label: 'XIRR Calculator',
     icon: <CalculatorIcon />,
   },
 ]

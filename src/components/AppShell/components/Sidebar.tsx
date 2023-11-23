@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { LogOutIcon } from 'lucide-react'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@radix-ui/react-accordion'
 import { cn } from '@/utils/utils'
 import NavLink from './NavLink'
 import { CALCULATOR_ROUTES, ROUTES } from '@/utils/app-shell'
@@ -35,12 +36,16 @@ export function Sidebar({ className, ...restProps }: SidebarProps) {
             ))}
           </div>
 
-          <div className='mt-4'>Calculators</div>
-          <div className='space-y-1 py-2'>
-            {CALCULATOR_ROUTES.map((route) => (
-              <NavLink key={route.path} to={route.path} label={route.label} icon={route.icon} />
-            ))}
-          </div>
+          <Accordion type='single' collapsible>
+            <AccordionItem value='item-1' className='border'>
+              <AccordionTrigger className='bg-slate-100 px-3'>Calculators</AccordionTrigger>
+              <AccordionContent className='space-y-1 py-2'>
+                {CALCULATOR_ROUTES.map((route) => (
+                  <NavLink key={route.path} to={route.path} label={route.label} icon={route.icon} />
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
 
         <div className='space-y-2'>
